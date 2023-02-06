@@ -13,6 +13,7 @@ var _connectionStr = builder.Configuration.GetConnectionString(nameof(A3Context)
 builder.Services.AddDbContext<A3Context>(options =>
     options.UseSqlServer(_connectionStr));
 
+// Builder Build()
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -20,15 +21,14 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
 }
+
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+// Default Controller Route
+app.MapDefaultControllerRoute();
 
+// Run
 app.Run();
 
