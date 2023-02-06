@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace A3.Models;
 
-public class Products
+public class Product
 {
     /** 
      * ^[A-Z] start capital letter
