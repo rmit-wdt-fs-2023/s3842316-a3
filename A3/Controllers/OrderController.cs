@@ -39,14 +39,14 @@ public class OrderController : Controller
                 return RedirectToAction("Index", "Home");
 
             // Result
-            var totalOrders = int.Parse(await response2.Content.ReadAsStringAsync());
+            var orderCount = int.Parse(await response2.Content.ReadAsStringAsync());
 
             // Adds data to view model
             orderViewModels.Add(
                 new OrderViewModel
                 {
                     Order = order,
-                    TotalOrders = totalOrders
+                    TotalOrders = orderCount
                 });
         }
 

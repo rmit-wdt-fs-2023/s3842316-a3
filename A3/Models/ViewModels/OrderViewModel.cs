@@ -7,7 +7,7 @@ public class OrderViewModel
 {
     public Order Order { get; set; }
 
-    [Display(Name = "No of Products Ordered")]
+    [Display(Name = "Total No of Products Ordered")]
     public int TotalOrders { get; set; }
 }
 

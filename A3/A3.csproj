@@ -17,25 +17,4 @@
   </ItemGroup>
 
 
-  <ItemGroup>
-    <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
-    <None Remove="Data\" />
-    <None Remove="X.PagedList.Mvc.Core" />
-    <None Remove="Views\Product\" />
-    <None Remove="Utils\" />
-    <None Remove="Views\OrderedProduct\" />
-    <None Remove="Models\ViewModels\" />
-    <None Remove="Controllers\Api\" />
-    <None Remove="Newtonsoft.Json" />
-    <None Remove="Views\Order\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Views\Product\" />
-    <Folder Include="Utils\" />
-    <Folder Include="Views\OrderedProduct\" />
-    <Folder Include="Models\ViewModels\" />
-    <Folder Include="Controllers\Api\" />
-    <Folder Include="Views\Order\" />
-  </ItemGroup>
 </Project>

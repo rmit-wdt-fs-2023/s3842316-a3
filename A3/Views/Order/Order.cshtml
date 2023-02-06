@@ -20,7 +20,7 @@
         </tr>
 
         @foreach (var order in Model)
-            {
+        {
             <tr>
                 <td class="text-left">@order.Order.OrderID</td>
                 <td class="text-center">@order.Order.OrderDate.ToLocalTime()</td>
@@ -32,5 +32,13 @@
         }
 
     </table>
+
+    <!-- Paging -->
+    @Html.PagedListPager(Model, page => Url.Action("Product", new { page }),
+    new PagedListRenderOptions
+    {
+        LiElementClasses = new[] { "page-item" },
+        PageClasses = new[] { "page-link" }
+    })
 
 </div>

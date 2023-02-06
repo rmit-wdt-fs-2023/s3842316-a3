@@ -19,13 +19,14 @@ public static class SeedData
     private static void Populate(A3Context context)
     {
         // Products
-        var p1 = new Product {Name = "S5000", Price = 10.00m };
+        var p1 = new Product { Name = "S5000", Price = 10.00m };
         var p2 = new Product { Name = "E8900", Price = 320.50m };
         var p3 = new Product { Name = "S9000", Price = 5900.00m };
         var p4 = new Product { Name = "P2300 IS", Price = 50.90m };
 
         // Orders
-        var o1 = new Order {
+        var o1 = new Order
+        {
             OrderDate = DateTime.UtcNow,
             CustomerName = "Seeded Customer1",
             DeliveryAddress = "2 Random Street",
@@ -39,7 +40,7 @@ public static class SeedData
             DeliveryDate = DateTime.UtcNow.AddMonths(1)
         };
 
-        
+
         context.Products.AddRange(p1, p2, p3, p4);
         context.Orders.AddRange(o1, o2);
         // OrderedProducts
@@ -53,8 +54,20 @@ public static class SeedData
             new OrderedProduct
             {
                 Order = o1,
+                Product = p2,
+                Quantity = 5
+            },
+            new OrderedProduct
+            {
+                Order = o1,
                 Product = p3,
                 Quantity = 10
+            },
+            new OrderedProduct
+            {
+                Order = o1,
+                Product = p4,
+                Quantity = 40
             },
             new OrderedProduct
             {
