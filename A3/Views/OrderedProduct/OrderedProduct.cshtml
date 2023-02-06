@@ -1,0 +1,68 @@
+﻿@model A3.Models.ViewModels.OrderedProductsViewModel
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+
+@{ViewData["Title"] = "Ordered Product"; }
+
+<div style="padding-left:50px; padding-top:30px">
+
+    <!-- Code Adapted From - RMIT/WDT/Week5-Lectorial/MvcMovie -->
+    <form asp-controller="OrderedProduct" asp-action="OrderedProduct" method="get">
+        <p>
+            @Html.DropDownListFor(x => x.Name, Model.Name, "All")
+            @*<select asp-for="Name" asp-items="Model.Name">
+                    <option value="">All</option>
+                </select>*@
+            <input type="submit" value="Filter" />
+        </p>
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderedProduct[0].OrderID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderedProduct[0].ProductID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderedProduct[0].Product.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderedProduct[0].Quantity)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OrderedProduct)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Paging -->
+    @Html.PagedListPager(Model.OrderedProduct, page => Url.Action("OrderedProduct", new { page }),
+    new PagedListRenderOptions
+    {
+        LiElementClasses = new[] { "page-item" },
+        PageClasses = new[] { "page-link" }
+    })
+
+</div>

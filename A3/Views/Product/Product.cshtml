@@ -3,9 +3,9 @@
 @using X.PagedList.Mvc.Core
 @using X.PagedList.Web.Common
 
-<div style="padding-left:50px; padding-top:30px">
+@{ViewData["Title"] = "Product"; }
 
-    @{ViewData["Title"] = "Product"; }
+<div style="padding-left:50px; padding-top:30px">
 
     <!-- Table -->
     <table class="table table-striped">
@@ -33,12 +33,12 @@
            asp-action="AddProduct">+ Add New Product</a>
     </h3>
 
+    <!-- Paging -->
     @Html.PagedListPager(Model, page => Url.Action("Product", new { page }),
     new PagedListRenderOptions
     {
         LiElementClasses = new[] { "page-item" },
         PageClasses = new[] { "page-link" }
     })
-
 
 </div>
