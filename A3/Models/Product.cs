@@ -25,10 +25,9 @@ public class Product
     // Required, and price has to be between greather than 0
     [Required]
     [DataType(DataType.Currency)]
-    [Range(1, (double)decimal.MaxValue, ErrorMessage = "Price has to be greater than 0")]
     public decimal Price { get; set; }
 
-    public List<OrderedProduct> OrderedProduct { get; set; }
+    public List<OrderedProduct>? OrderedProduct { get; set; }
 
 }
 

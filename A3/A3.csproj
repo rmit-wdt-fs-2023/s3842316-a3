@@ -23,9 +23,11 @@
     <None Remove="Data\" />
     <None Remove="X.PagedList.Mvc.Core" />
     <None Remove="Views\Product\" />
+    <None Remove="Utils\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Views\Product\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
 </Project>

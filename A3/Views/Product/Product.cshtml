@@ -33,7 +33,7 @@
            asp-action="AddProduct">+ Add New Product</a>
     </h3>
 
-    @Html.PagedListPager(Model, page => Url.Action("MyStatement", new { page }),
+    @Html.PagedListPager(Model, page => Url.Action("Product", new { page }),
     new PagedListRenderOptions
     {
         LiElementClasses = new[] { "page-item" },
