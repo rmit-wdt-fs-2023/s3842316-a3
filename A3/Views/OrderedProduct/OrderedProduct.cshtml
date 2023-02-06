@@ -11,10 +11,8 @@
     <form asp-controller="OrderedProduct" asp-action="OrderedProduct" method="get">
         <p>
             @Html.DropDownListFor(x => x.Name, Model.Name, "All")
-            @*<select asp-for="Name" asp-items="Model.Name">
-                    <option value="">All</option>
-                </select>*@
-            <input type="submit" value="Filter" />
+            &nbsp
+            <input class="btn btn-outline-primary btn-sm" type="submit" value="Filter" />
         </p>
     </form>
 

@@ -1,0 +1,36 @@
+﻿@model IPagedList<A3.Models.ViewModels.OrderViewModel>
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+
+@{ViewData["Title"] = "Order"; }
+
+<div style="padding-left:50px; padding-top:30px">
+
+    <!-- Table -->
+    <table class="table table-striped">
+
+        <tr>
+            <th class="col-1 text-left">@Html.DisplayNameFor(x => x[0].Order.OrderID)</th>
+            <th class="text-center">@Html.DisplayNameFor(x => x[0].Order.OrderDate)</th>
+            <th class="text-center">@Html.DisplayNameFor(x => x[0].Order.CustomerName)</th>
+            <th class="text-center">@Html.DisplayNameFor(x => x[0].Order.DeliveryAddress)</th>
+            <th class="text-center">@Html.DisplayNameFor(x => x[0].Order.DeliveryDate)</th>
+            <th class="text-center">@Html.DisplayNameFor(x => x[0].TotalOrders)</th>
+        </tr>
+
+        @foreach (var order in Model)
+            {
+            <tr>
+                <td class="text-left">@order.Order.OrderID</td>
+                <td class="text-center">@order.Order.OrderDate.ToLocalTime()</td>
+                <td class="text-center">@order.Order.CustomerName</td>
+                <td class="text-center">@order.Order.DeliveryAddress</td>
+                <td class="text-center">@(order.Order.DeliveryDate.HasValue ? order.Order.DeliveryDate.Value.ToLocalTime() : "n/a")</td>
+                <td class="text-center">@order.TotalOrders</td>
+            </tr>
+        }
+
+    </table>
+
+</div>

@@ -1,5 +1,8 @@
 ﻿using A3.Data;
+using System.Net.Mime;
+using System.Net.Http.Headers;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +15,14 @@ var _connectionStr = builder.Configuration.GetConnectionString(nameof(A3Context)
 // DbContext service 
 builder.Services.AddDbContext<A3Context>(options =>
     options.UseSqlServer(_connectionStr));
+
+// The default client.
+builder.Services.AddHttpClient("api", client =>
+{
+    client.BaseAddress = new Uri("http://localhost:5100");
+    client.DefaultRequestHeaders.Accept.Add(
+        new MediaTypeWithQualityHeaderValue(MediaTypeNames.Application.Json));
+});
 
 // Builder Build()
 var app = builder.Build();
