@@ -4,6 +4,7 @@ using A3.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace A3.Migrations
 {
     [DbContext(typeof(A3Context))]
-    partial class A3ContextModelSnapshot : ModelSnapshot
+    [Migration("20230206050221_ChangesToProduct")]
+    partial class ChangesToProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,13 +96,13 @@ namespace A3.Migrations
             modelBuilder.Entity("A3.Models.OrderedProduct", b =>
                 {
                     b.HasOne("A3.Models.Order", "Order")
-                        .WithMany("OrderedProduct")
+                        .WithMany()
                         .HasForeignKey("OrderID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("A3.Models.Product", "Product")
-                        .WithMany("OrderedProduct")
+                        .WithMany()
                         .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -107,16 +110,6 @@ namespace A3.Migrations
                     b.Navigation("Order");
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("A3.Models.Order", b =>
-                {
-                    b.Navigation("OrderedProduct");
-                });
-
-            modelBuilder.Entity("A3.Models.Product", b =>
-                {
-                    b.Navigation("OrderedProduct");
                 });
 #pragma warning restore 612, 618
         }

@@ -37,5 +37,7 @@ public class Order
     [Display(Name = "Delivery Date")]
     public DateTime? DeliveryDate { get; set; }
 
+    public List<OrderedProduct> OrderedProduct { get; set; }
+
 }
 
