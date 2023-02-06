@@ -1,0 +1,44 @@
+﻿@model IPagedList<Product>
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+
+<div style="padding-left:50px; padding-top:30px">
+
+    @{ViewData["Title"] = "Product"; }
+
+    <!-- Table -->
+    <table class="table table-striped">
+
+        <tr>
+            <th class="col-1 text-left">@Html.DisplayNameFor(x => x[0].ProductID)</th>
+            <th class="text-center">@Html.DisplayNameFor(x => x[0].Name)</th>
+            <th class="text-center">@Html.DisplayNameFor(x => x[0].Price)</th>
+        </tr>
+
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td class="text-left">@product.ProductID</td>
+                <td class="text-center">@product.Name</td>
+                <td class="text-center">@product.Price</td>
+            </tr>
+        }
+
+    </table>
+
+    <!-- Add New Product Button-->
+    <h3>
+        <a class="btn btn-outline-primary float-end"
+           asp-action="AddProduct">+ Add New Product</a>
+    </h3>
+
+    @Html.PagedListPager(Model, page => Url.Action("MyStatement", new { page }),
+    new PagedListRenderOptions
+    {
+        LiElementClasses = new[] { "page-item" },
+        PageClasses = new[] { "page-link" }
+    })
+
+
+</div>
