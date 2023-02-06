@@ -1,7 +1,17 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using A3.Data;
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Db Connectrion String
+var _connectionStr = builder.Configuration.GetConnectionString(nameof(A3Context));
+
+// DbContext service 
+builder.Services.AddDbContext<A3Context>(options =>
+    options.UseSqlServer(_connectionStr));
 
 var app = builder.Build();
 
