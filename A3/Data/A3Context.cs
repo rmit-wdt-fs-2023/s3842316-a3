@@ -12,4 +12,12 @@ public class A3Context : DbContext
     public DbSet<OrderedProducts> OrderedProducts { get; set; }
     public DbSet<Products> Products { get; set; }
 
+    // Fluent-API.
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+
+        // Composite primary key.
+        builder.Entity<OrderedProducts>().HasKey(x => new { x.OrderID, x.ProductID });
+    }
 }
